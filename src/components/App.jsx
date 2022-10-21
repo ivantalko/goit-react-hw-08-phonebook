@@ -1,25 +1,35 @@
 import { Component } from 'react';
-import { Phonebook } from './Phonebook';
+import { Phonebook } from './Phonebook/Phonebook';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
     contacts: [],
-    name: '',
-    number: '',
+    filter: '',
+  };
+  handleDeleteUser = id => {
+    this.setState(prevState => {
+      return { contacts: prevState.contacts.filter(item => item.id !== id) };
+    });
+  };
+  getFilteredContacts = () => {
+    return this.state.contacts.filter(elem =>
+      elem.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
   };
   onChangeName = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = (name, number) => {
+    if (this.state.contacts.some(contact => contact.name === name)) {
+      return alert(`$(name) is already in contacts`);
+    }
     this.setState(prevState => {
       return {
-        contacts: [
-          ...prevState.contacts,
-          { name: this.state.name, number: this.state.number, id: nanoid() },
-        ],
+        contacts: [...prevState.contacts, { name, number, id: nanoid() }],
       };
     });
   };
@@ -39,9 +49,11 @@ export class App extends Component {
         }}
       >
         <Phonebook
+          phoneSubmit={this.handleSubmit}
           onChangeName={this.onChangeName}
-          handleSubmit={this.handleSubmit}
-          contacts={this.state.contacts}
+          contacts={this.getFilteredContacts()}
+          filter={this.state.filter}
+          delate={this.handleDeleteUser}
         />
       </div>
     );
