@@ -1,9 +1,12 @@
 @import-normalize; /* bring in normalize.css styles */
 form {
-  border: 1px solid black;
+  border: 1px solid rgb(10, 10, 10);
   display: flex;
   flex-direction: column;
-  width: 177px;
+  padding: 30px;
+  width: 250px;
+  background-color: rgb(124, 118, 129);
+  color: rgb(43, 205, 226);
 }
 p {
   padding: 0;
@@ -15,6 +18,9 @@ label {
 ul {
   margin: 0;
   padding: 0;
+}
+button {
+  color: rgb(255, 0, 34);
 }
 li {
   display: flex;
