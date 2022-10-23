@@ -48,6 +48,5 @@ export class ContactForm extends Component {
   }
 }
 ContactForm.propTypes = {
-  onChangeName: PropTypes.func.isRequired,
   phoneSubmit: PropTypes.func.isRequired,
 };

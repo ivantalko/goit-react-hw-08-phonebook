@@ -49,10 +49,7 @@ export class App extends Component {
           gap: 10,
         }}
       >
-        <ContactForm
-          onChangeName={this.onChangeName}
-          phoneSubmit={this.handleSubmit}
-        />
+        <ContactForm phoneSubmit={this.handleSubmit} />
         <FilterContacts onChangeName={this.onChangeName} />
         <ContactList
           contacts={this.getFilteredContacts()}
