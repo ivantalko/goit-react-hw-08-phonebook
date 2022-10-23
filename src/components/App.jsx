@@ -1,5 +1,7 @@
 import { Component } from 'react';
-import { Phonebook } from './Phonebook/Phonebook';
+import { ContactForm } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { FilterContacts } from './FilterContacts/FilterContacts';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
@@ -25,8 +27,9 @@ export class App extends Component {
 
   handleSubmit = (name, number) => {
     if (this.state.contacts.some(contact => contact.name === name)) {
-      return alert(`$(name) is already in contacts`);
+      return alert(`${name} is already in contacts`);
     }
+
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, { name, number, id: nanoid() }],
@@ -38,22 +41,22 @@ export class App extends Component {
     return (
       <div
         style={{
-          height: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
           color: '#010101',
           gap: 10,
         }}
       >
-        <Phonebook
-          phoneSubmit={this.handleSubmit}
+        <ContactForm
           onChangeName={this.onChangeName}
+          phoneSubmit={this.handleSubmit}
+        />
+        <FilterContacts onChangeName={this.onChangeName} />
+        <ContactList
           contacts={this.getFilteredContacts()}
-          filter={this.state.filter}
-          delate={this.handleDeleteUser}
+          delete={this.handleDeleteUser}
         />
       </div>
     );
