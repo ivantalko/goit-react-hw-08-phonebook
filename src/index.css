@@ -5,7 +5,10 @@ form {
   flex-direction: column;
   width: 177px;
 }
-
+p {
+  padding: 0;
+  margin: 0;
+}
 label {
   font-size: 15px;
 }
