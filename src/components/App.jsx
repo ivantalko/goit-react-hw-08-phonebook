@@ -4,9 +4,13 @@ import { FilterContacts } from './FilterContacts/FilterContacts';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addContact } from 'redux/Phonebook.redux/typseactions';
 
 export const App = () => {
+  // const dispatch = useDispatch();
   const [filter, setFilter] = useState('');
+  // const contacts = useSelector(state => state.contacts);
   const [contacts, setContacts] = useState(() => {
     const getContact = localStorage.getItem('contacts');
     if (getContact) {
@@ -14,7 +18,12 @@ export const App = () => {
     }
     return [];
   });
-
+  // useEffect(() => {
+  //   const getContact = localStorage.getItem('contacts');
+  //   if (getContact) {
+  //     return JSON.parse(getContact);
+  //   }
+  // }, []);
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
@@ -37,7 +46,7 @@ export const App = () => {
     if (contacts.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts`);
     }
-
+    //   dispatch(addContact({ name, number, id: nanoid() }));
     setContacts(prevContacts => {
       return [...prevContacts, { name, number, id: nanoid() }];
     });
