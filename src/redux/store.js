@@ -1,6 +1,3 @@
-// import { createStore } from 'redux';
-// import { contactsReducer } from './Phonebook.redux/reducer.Phonebook';
-// export const store = contactsReducer;
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './rootReducer';
 import { persistStore, persistReducer } from 'redux-persist';
