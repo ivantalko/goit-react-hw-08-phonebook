@@ -1,5 +1,13 @@
-import PropTypes from 'prop-types';
-export const ContactList = ({ contacts, onDelete }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContactAction } from 'redux/Phonebook.redux/phonebookSlice';
+import { getFilteredContacts } from 'redux/Phonebook.redux/selector';
+export const ContactList = () => {
+  const contacts = useSelector(getFilteredContacts);
+  const dispatch = useDispatch();
+  const handleDeleteUser = id => {
+    dispatch(deleteContactAction(id));
+  };
+
   return (
     <>
       <ul>
@@ -7,21 +15,10 @@ export const ContactList = ({ contacts, onDelete }) => {
           <li key={contact.id}>
             <p>{contact.name}</p>
             <p>{contact.number}</p>
-            <button onClick={() => onDelete(contact.id)}>Delete</button>
+            <button onClick={() => handleDeleteUser(contact.id)}>Delete</button>
           </li>
         ))}
       </ul>
     </>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.string,
-      id: PropTypes.string,
-    })
-  ).isRequired,
-  onDelete: PropTypes.func.isRequired,
 };

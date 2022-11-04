@@ -1,20 +1,30 @@
-import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
-export const ContactForm = ({ phoneSubmit }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { addContactAction } from 'redux/Phonebook.redux/phonebookSlice';
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
+  const contacts = useSelector(state => state.phonebook.contacts);
+  const dispatch = useDispatch();
   const handelSubmitTow = event => {
     event.preventDefault();
-    phoneSubmit(name, number);
+    handleSubmit(name, number);
     setName('');
     setNumber('');
   };
+
   const onChangeName = event => {
     setName(event.target.value);
   };
   const onChangeNumber = event => {
     setNumber(event.target.value);
+  };
+  const handleSubmit = (name, number) => {
+    if (contacts.some(contact => contact.name === name)) {
+      return alert(`${name} is already in contacts`);
+    }
+    dispatch(addContactAction({ name, number, id: nanoid() }));
   };
 
   return (
@@ -46,8 +56,4 @@ export const ContactForm = ({ phoneSubmit }) => {
       </form>
     </>
   );
-};
-
-ContactForm.propTypes = {
-  phoneSubmit: PropTypes.func.isRequired,
 };
