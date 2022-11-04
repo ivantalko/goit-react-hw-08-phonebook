@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterAction } from 'redux/Phonebook.redux/FiltrSlice';
 import { getFilter } from 'redux/Phonebook.redux/selector';
@@ -15,8 +14,4 @@ export const FilterContacts = () => {
       <input type="text" name="filter" onChange={onChangeName} value={filter} />
     </>
   );
-};
-
-FilterContacts.propTypse = {
-  onChange: PropTypes.func.isRequired,
 };
