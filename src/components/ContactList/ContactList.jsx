@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContactAction } from 'redux/Phonebook.redux/phonebookSlice';
+import { deleteContactsData } from 'redux/Phonebook.redux/operations';
 import { getFilteredContacts } from 'redux/Phonebook.redux/selector';
 export const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
   const handleDeleteUser = id => {
-    dispatch(deleteContactAction(id));
+    dispatch(deleteContactsData(id));
   };
 
   return (
