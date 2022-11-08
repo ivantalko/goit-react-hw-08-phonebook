@@ -3,9 +3,9 @@ import { addContact, deleteContact, getContacts } from '../../helpers/API';
 
 export const getContactsData = createAsyncThunk(
   'phonebook/fetchAll',
-  async (data, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await getContacts(data);
+      const response = await getContacts();
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
