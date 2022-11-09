@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { getContactsData } from 'redux/Phonebook.redux/operations';
-
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { FilterContacts } from './FilterContacts/FilterContacts';
+import { ToastContainer } from 'react-toastify';
+import { Layout } from './Layout/Layout';
+import { RegistrationUser } from './RegistrForm/RegistrForm';
+import { Phonebook } from './PhoneBoook/Phonebook';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -12,19 +13,14 @@ export const App = () => {
     dispatch(getContactsData());
   }, [dispatch]);
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: '#010101',
-        gap: 10,
-      }}
-    >
-      <ContactForm />
-      <FilterContacts />
-      <ContactList />
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/registration" element={<RegistrationUser />} />
+          <Route path="/phonebook" element={<Phonebook />} />
+        </Routes>
+        <ToastContainer />
+      </Layout>
+    </>
   );
 };
