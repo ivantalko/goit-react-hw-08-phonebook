@@ -37,6 +37,7 @@ export const phonebookSlice = createSlice({
     },
 
     [setContactsData.fulfilled](state, action) {
+      state.status = Status.success;
       state.items = [...state.items, action.payload];
     },
 
@@ -47,6 +48,7 @@ export const phonebookSlice = createSlice({
       state.status = Status.loading;
     },
     [deleteContactsData.fulfilled](state, action) {
+      state.status = Status.success;
       state.items = state.items.filter(
         contact => contact.id !== action.payload.id
       );
