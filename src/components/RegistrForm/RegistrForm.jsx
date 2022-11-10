@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+// import { useDispatch } from 'react-redux';
+// import { toast } from 'react-toastify';
 
 export const RegistrationUser = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repPassword, setRepPassword] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const inputs = {
     name: setName,
