@@ -1,17 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { getContactsData } from 'redux/Phonebook.redux/operations';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Layout } from './Layout/Layout';
-import { RegistrationUser } from './RegistrForm/RegistrForm';
-import { Phonebook } from './PhoneBoook/Phonebook';
-
+import { RegistrationUser } from './ContactForm/Page/RegistrForm/RegistrForm';
+import { Phonebook } from './ContactForm/Page/PhoneBoook/Phonebook';
 export const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getContactsData());
-  }, [dispatch]);
   return (
     <>
       <Layout>
