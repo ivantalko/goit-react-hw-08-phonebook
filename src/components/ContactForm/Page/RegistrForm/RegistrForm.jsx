@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { registrUser } from 'redux/Autorization/operation.R.A';
 
-export const RegistrationUser = () => {
+function RegistrationUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -92,4 +92,5 @@ export const RegistrationUser = () => {
       </form>
     </div>
   );
-};
+}
+export default RegistrationUser;

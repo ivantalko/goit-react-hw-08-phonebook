@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginOperation } from 'redux/Autorization/operation.R.A';
 
-export const Login = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -42,4 +42,5 @@ export const Login = () => {
       </form>
     </div>
   );
-};
+}
+export default Login;
