@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { login, logout, postRegistartionUser } from 'helpers/API.RandA';
+import {
+  current,
+  login,
+  logout,
+  postRegistartionUser,
+} from 'helpers/API.RandA';
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -36,11 +41,25 @@ export const loginOperation = createAsyncThunk(
   }
 );
 export const logoutOperation = createAsyncThunk(
-  'auth/login',
+  'auth/logout',
   async (_, thunkAPI) => {
     try {
       const response = await logout();
       token.unset(response.token);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const currentOperation = createAsyncThunk(
+  'auth/current',
+  async (_, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      token.set(state.registr.token);
+      const response = await current();
+
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

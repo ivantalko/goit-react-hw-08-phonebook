@@ -13,3 +13,7 @@ export async function logout() {
   const { data } = await axios.post('/users/logout/');
   return data;
 }
+export async function current() {
+  const { data } = await axios.get('/users/current/');
+  return data;
+}

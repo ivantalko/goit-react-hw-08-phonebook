@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './rootReducer';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore } from 'redux-persist';
+
 import {
   FLUSH,
   REHYDRATE,
@@ -10,15 +10,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-const persistConfig = {
-  key: 'notes',
-  storage,
-  whitelist: ['token'],
-  devTools: process.env.NODE_ENV === 'development',
-};
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { StatusForAll } from '../StatusForAll';
 import {
+  currentOperation,
   loginOperation,
   logoutOperation,
   registrUser,
@@ -18,7 +19,6 @@ const registrSlice = createSlice({
   extraReducers: {
     [registrUser.pending](state) {
       state.status = StatusForAll.loading;
-      state.isLoggedIn = true;
     },
     [registrUser.fulfilled](state, action) {
       state.status = StatusForAll.success;
@@ -35,7 +35,6 @@ const registrSlice = createSlice({
     },
     [loginOperation.pending](state) {
       state.status = StatusForAll.loading;
-      state.isLoggedIn = true;
     },
     [loginOperation.fulfilled](state, action) {
       state.status = StatusForAll.success;
@@ -52,7 +51,6 @@ const registrSlice = createSlice({
     },
     [logoutOperation.pending](state) {
       state.status = StatusForAll.loading;
-      state.isLoggedIn = true;
     },
     [logoutOperation.fulfilled](state, action) {
       state.status = StatusForAll.success;
@@ -61,6 +59,21 @@ const registrSlice = createSlice({
     },
     [logoutOperation.rejected](state) {
       state.status = StatusForAll.error;
+    },
+    [currentOperation.pending](state) {
+      state.status = StatusForAll.loading;
+    },
+    [currentOperation.fulfilled](state, action) {
+      state.status = StatusForAll.success;
+      state.user = action.payload;
+      state.isLoggedIn = true;
+    },
+    [currentOperation.rejected](state) {
+      state.status = StatusForAll.error;
+      state.user.name = null;
+      state.user.email = null;
+      state.isLoggedIn = false;
+      state.token = null;
     },
   },
 });

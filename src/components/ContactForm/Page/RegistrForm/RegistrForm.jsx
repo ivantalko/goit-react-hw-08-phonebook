@@ -88,7 +88,7 @@ export const RegistrationUser = () => {
             type="password"
           />
         </label>
-        <button type="submit">Зареєструватися</button>
+        <button type="submit">Registartion</button>
       </form>
     </div>
   );

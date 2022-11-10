@@ -7,8 +7,15 @@ import { Phonebook } from './ContactForm/Page/PhoneBoook/Phonebook';
 import { Login } from './ContactForm/Page/Login/Login';
 import PublicRouts from './PublickRoutse/PublickRoutse';
 import PrivateRouts from './PrivatRouts/PrivatRouts';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { currentOperation } from 'redux/Autorization/operation.R.A';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(currentOperation());
+  }, [dispatch]);
   return (
     <>
       <Layout>
