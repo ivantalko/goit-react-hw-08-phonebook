@@ -35,50 +35,61 @@ export const RegistrationUser = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label>
-        name
-        <input
-          required
-          onChange={handleInput}
-          name="name"
-          value={name}
-          type="text"
-          placeholder="sponche-bob"
-        />
-      </label>
-      <label>
-        email
-        <input
-          required
-          onChange={handleInput}
-          name="email"
-          value={email}
-          type="email"
-          placeholder="email@gmail.com"
-        />
-      </label>
-      <label>
-        pasword
-        <input
-          required
-          onChange={handleInput}
-          name="password"
-          value={password}
-          type="password"
-        />
-      </label>
-      <label>
-        Confim pasword
-        <input
-          required
-          onChange={handleInput}
-          name="repPassword"
-          value={repPassword}
-          type="password"
-        />
-      </label>
-      <button type="submit">Зареєструватися</button>
-    </form>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: '#010101',
+        gap: 10,
+      }}
+    >
+      <form onSubmit={handleFormSubmit}>
+        <label>
+          name
+          <input
+            required
+            onChange={handleInput}
+            name="name"
+            value={name}
+            type="text"
+            placeholder="sponche-bob"
+          />
+        </label>
+        <label>
+          email
+          <input
+            required
+            onChange={handleInput}
+            name="email"
+            value={email}
+            type="email"
+            placeholder="email@gmail.com"
+          />
+        </label>
+        <label>
+          pasword
+          <input
+            required
+            onChange={handleInput}
+            name="password"
+            value={password}
+            type="password"
+          />
+        </label>
+        <label>
+          Confim pasword
+          <input
+            required
+            onChange={handleInput}
+            name="repPassword"
+            value={repPassword}
+            type="password"
+          />
+        </label>
+        <button type="submit">Зареєструватися</button>
+      </form>
+    </div>
   );
 };

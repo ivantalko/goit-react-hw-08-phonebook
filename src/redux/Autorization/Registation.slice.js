@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { StatusForAll } from '../StatusForAll';
-import { registrUser } from './operation.R.A';
+import {
+  loginOperation,
+  logoutOperation,
+  registrUser,
+  token,
+} from './operation.R.A';
 const initialState = {
   user: { name: null, email: null },
   token: null,
@@ -11,7 +16,7 @@ const registrSlice = createSlice({
   name: 'regisrt',
   initialState,
   extraReducers: {
-    [registrUser.panding](state) {
+    [registrUser.pending](state) {
       state.status = StatusForAll.loading;
       state.isLoggedIn = true;
     },
@@ -27,6 +32,35 @@ const registrSlice = createSlice({
       state.user.email = null;
       state.isLoggedIn = false;
       state.token = null;
+    },
+    [loginOperation.pending](state) {
+      state.status = StatusForAll.loading;
+      state.isLoggedIn = true;
+    },
+    [loginOperation.fulfilled](state, action) {
+      state.status = StatusForAll.success;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [loginOperation.rejected](state) {
+      state.status = StatusForAll.error;
+      state.user.name = null;
+      state.user.email = null;
+      state.isLoggedIn = false;
+      state.token = null;
+    },
+    [logoutOperation.pending](state) {
+      state.status = StatusForAll.loading;
+      state.isLoggedIn = true;
+    },
+    [logoutOperation.fulfilled](state, action) {
+      state.status = StatusForAll.success;
+      token.unset();
+      return initialState;
+    },
+    [logoutOperation.rejected](state) {
+      state.status = StatusForAll.error;
     },
   },
 });

@@ -5,3 +5,11 @@ export async function postRegistartionUser(user) {
   const { data } = await axios.post('/users/signup/', user);
   return data;
 }
+export async function login(body) {
+  const { data } = await axios.post('/users/login/', body);
+  return data;
+}
+export async function logout() {
+  const { data } = await axios.post('/users/logout/');
+  return data;
+}
