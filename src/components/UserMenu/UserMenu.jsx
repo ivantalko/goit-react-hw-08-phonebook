@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutOperation } from 'redux/Autorization/operation.R.A';
-import css from './UserMenu.modele.css';
+import css from './UserMenu.module.css';
 function UserMenu() {
   const name = useSelector(state => state.registr.user?.name);
   const email = useSelector(state => state.registr.user?.email);
