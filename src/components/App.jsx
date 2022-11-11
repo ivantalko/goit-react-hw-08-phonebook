@@ -8,11 +8,9 @@ import { Layout } from './Layout/Layout';
 import PublicRouts from './PublickRoutse/PublickRoutse';
 import PrivateRouts from './PrivatRouts/PrivatRouts';
 import { currentOperation } from 'redux/Autorization/operation.R.A';
-const RegistrationUser = lazy(() =>
-  import('./ContactForm/Page/RegistrForm/RegistrForm')
-);
-const Login = lazy(() => import('./ContactForm/Page/Login/Login'));
-const Phonebook = lazy(() => import('./ContactForm/Page/PhoneBoook/Phonebook'));
+const RegistrationUser = lazy(() => import('./Page/RegistrForm/RegistrForm'));
+const Login = lazy(() => import('./Page/Login/Login'));
+const Phonebook = lazy(() => import('./Page/PhoneBoook/Phonebook'));
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,8 +18,8 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
-      <Suspense>
-        <Layout>
+      <Layout>
+        <Suspense>
           <Routes>
             <Route path="/" element={<PublicRouts />}>
               <Route path="/registration" element={<RegistrationUser />} />
@@ -32,8 +30,8 @@ export const App = () => {
             </Route>
           </Routes>
           <ToastContainer />
-        </Layout>
-      </Suspense>
+        </Suspense>
+      </Layout>
     </>
   );
 };

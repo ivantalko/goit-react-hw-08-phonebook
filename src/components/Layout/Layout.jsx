@@ -1,4 +1,4 @@
-import Footer from 'components/ContactForm/Footer/Footer';
+import Footer from 'components/Page/Footer/Footer';
 import { Header } from 'components/Header/Header';
 
 export const Layout = ({ children }) => {
