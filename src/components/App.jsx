@@ -8,6 +8,7 @@ import { Layout } from './Layout/Layout';
 import PublicRouts from './PublickRoutse/PublickRoutse';
 import PrivateRouts from './PrivatRouts/PrivatRouts';
 import { currentOperation } from 'redux/Autorization/operation.R.A';
+import HomePage from './Page/HomPage/HomePage';
 const RegistrationUser = lazy(() => import('./Page/RegistrForm/RegistrForm'));
 const Login = lazy(() => import('./Page/Login/Login'));
 const Phonebook = lazy(() => import('./Page/PhoneBoook/Phonebook'));
@@ -21,6 +22,7 @@ export const App = () => {
       <Layout>
         <Suspense>
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/" element={<PublicRouts />}>
               <Route path="/registration" element={<RegistrationUser />} />
               <Route path="/login" element={<Login />} />

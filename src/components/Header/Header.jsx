@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { HiArrowCircleRight } from 'react-icons/hi';
-import { useDispatch } from 'react-redux';
-import { logoutOperation } from 'redux/Autorization/operation.R.A';
+import UserMenu from 'components/Page/UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  const dispatch = useDispatch();
-
+  const token = useSelector(state => state.registr.token);
   return (
     <header>
       <nav>
@@ -13,19 +12,26 @@ export const Header = () => {
           <HiArrowCircleRight />
         </NavLink>
         <ul>
-          <li>
-            <NavLink to="/registration">Registration</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Autorithation</NavLink>
-          </li>
-          <li>
-            <NavLink to="/phonebook">Phonebook</NavLink>
-          </li>
+          {token ? (
+            <>
+              <li>
+                <NavLink to="/phonebook">Phonebook</NavLink>
+              </li>
+              <li>
+                <UserMenu />
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/registration">Registration</NavLink>
+              </li>
+              <li>
+                <NavLink to="/login">Autorithation</NavLink>
+              </li>
+            </>
+          )}
         </ul>
-        <button type="button" onClick={() => dispatch(logoutOperation())}>
-          logout
-        </button>
       </nav>
     </header>
   );

@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-import { getIsLoggedIn } from 'redux/Autorization/auth-selector';
 
 export default function PublicRouts() {
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const token = useSelector(state => state.registr.token);
 
-  return isLoggedIn ? <Navigate to="/products" /> : <Outlet />;
+  return token ? <Navigate to="/phonebook" /> : <Outlet />;
 }

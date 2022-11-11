@@ -57,10 +57,13 @@ export const currentOperation = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
-      token.set(state.registr.token);
-      const response = await current();
-
-      return response;
+      if (state.registr.token) {
+        token.set(state.registr.token);
+        const response = await current();
+        return response;
+      } else {
+        return thunkAPI.rejectWithValue();
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

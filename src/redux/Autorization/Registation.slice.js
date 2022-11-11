@@ -52,9 +52,7 @@ const registrSlice = createSlice({
     [logoutOperation.pending](state) {
       state.status = StatusForAll.loading;
     },
-    [logoutOperation.fulfilled](state, action) {
-      state.status = StatusForAll.success;
-      token.unset();
+    [logoutOperation.fulfilled]() {
       return initialState;
     },
     [logoutOperation.rejected](state) {
