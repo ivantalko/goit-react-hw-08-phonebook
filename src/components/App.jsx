@@ -8,10 +8,12 @@ import { Layout } from './Layout/Layout';
 import PublicRouts from './PublickRoutse/PublickRoutse';
 import PrivateRouts from './PrivatRouts/PrivatRouts';
 import { currentOperation } from 'redux/Autorization/operation.R.A';
-import HomePage from './Page/HomPage/HomePage';
-const RegistrationUser = lazy(() => import('./Page/RegistrForm/RegistrForm'));
-const Login = lazy(() => import('./Page/Login/Login'));
-const Phonebook = lazy(() => import('./Page/PhoneBoook/Phonebook'));
+import HomePage from './Page/HomePage/HomePage';
+const RegistrationUser = lazy(() =>
+  import('./Page/RegistrFormPage/RegistrFormPage')
+);
+const Login = lazy(() => import('./Page/LoginPage/LoginPage'));
+const Phonebook = lazy(() => import('./Page/PhoneBoookPage/PhonebookPage'));
 
 export const App = () => {
   const dispatch = useDispatch();

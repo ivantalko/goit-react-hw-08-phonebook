@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { HiArrowCircleRight } from 'react-icons/hi';
-import UserMenu from 'components/Page/UserMenu/UserMenu';
+import UserMenu from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
 import css from './Header.module.css';
 
