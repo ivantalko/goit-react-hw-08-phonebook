@@ -2,8 +2,11 @@ import { NavLink } from 'react-router-dom';
 import { HiArrowCircleRight } from 'react-icons/hi';
 import UserMenu from 'components/Page/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
+import css from './Header.module.css';
 
 export const Header = () => {
+  const activeClassNameNav = ({ isActive }) =>
+    isActive ? css.active : css.link;
   const token = useSelector(state => state.registr.token);
   return (
     <header>
@@ -15,7 +18,9 @@ export const Header = () => {
           {token ? (
             <>
               <li>
-                <NavLink to="/phonebook">Phonebook</NavLink>
+                <NavLink to="/phonebook" className={activeClassNameNav}>
+                  Phonebook
+                </NavLink>
               </li>
               <li>
                 <UserMenu />
@@ -24,10 +29,14 @@ export const Header = () => {
           ) : (
             <>
               <li>
-                <NavLink to="/registration">Registration</NavLink>
+                <NavLink to="/registration" className={activeClassNameNav}>
+                  Registration
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/login">Autorithation</NavLink>
+                <NavLink to="/login" className={activeClassNameNav}>
+                  Autorithation{' '}
+                </NavLink>
               </li>
             </>
           )}

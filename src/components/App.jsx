@@ -12,6 +12,7 @@ import HomePage from './Page/HomPage/HomePage';
 const RegistrationUser = lazy(() => import('./Page/RegistrForm/RegistrForm'));
 const Login = lazy(() => import('./Page/Login/Login'));
 const Phonebook = lazy(() => import('./Page/PhoneBoook/Phonebook'));
+
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
