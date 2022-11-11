@@ -5,7 +5,6 @@ import {
   loginOperation,
   logoutOperation,
   registrUser,
-  token,
 } from './operation.R.A';
 const initialState = {
   user: { name: null, email: null },
