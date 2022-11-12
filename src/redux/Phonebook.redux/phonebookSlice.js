@@ -11,7 +11,7 @@ const initialState = {
   error: null,
   status: StatusForAll.init,
 };
-export const phonebookSlice = createSlice({
+const phonebookSlice = createSlice({
   name: 'phonebook',
   initialState,
   extraReducers: {
